@@ -1,7 +1,8 @@
+require("dotenv").config();
 const { Rcon } = require("rcon-client");
 
 const rcon = new Rcon({
-  host: "localhost", port: 25575, password: "password"
+  host: process.env.RCON_HOST, port: process.env.RCON_PORT, password: process.env.RCON_PASS
 });
 rcon.on("connect", () => console.log("connected"));
 rcon.on("authenticated", () => console.log("authenticated"));

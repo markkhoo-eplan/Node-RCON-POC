@@ -1,16 +1,9 @@
+require("dotenv").config();
 const express = require('express');
 const app = express();
 const port = 3003;
 
-const { Rcon } = require("rcon-client");
-
-const rcon = new Rcon({
-  host: "localhost", port: 25575, password: "password"
-});
-rcon.on("connect", () => console.log("connected"));
-rcon.on("authenticated", () => console.log("authenticated"));
-rcon.on("end", () => console.log("end"));
-rcon.on("error", () => console.log("error"));
+const rcon = require("./config/rcon-client");
 
 async function rconConnect(res) {
   return rcon.connect().catch(err => {
